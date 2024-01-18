@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignUp . Electricity Management System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <h1>Create Account</h1>
+            <form action="signup.jsp" method="post">
+                <!--First , middle , last Names-->
+                <div class="input-container">
+                    <input type="text" id="username" name="fname" placeholder="First Name" required>
+                </div>
+                <div class="input-container">
+                    <input type="text" id="username" name="mname" placeholder="Middle Name">
+                </div>
+                <div class="input-container">
+                    <input type="text" id="username" name="lname" placeholder="Last Name" required>
+                </div>
+
+                <br>
+                
+                <!--Date of Birth-->
+                <div class="input-container" >
+                    <span style="padding-top:8px; padding-bottom:8px ;border:0px ; font-weight:700;">Date of Birth </span>
+                    <br>
+                    <input type="date" name="date"  required>
+                </div>
+
+                <br>
+                
+                <!--Email address-->
+                <div class="input-container">
+                    <input type="email" id="email" name="email" placeholder="Email address" required>
+                </div>
+
+                <br>
+                <div class="input-container">
+                    <input type="text" id="uname" name="username" placeholder="Create UserName" required>
+                </div>
+                <div class="input-container">
+                    <input type="password" id="password" name="fpassword" placeholder="Create Password" required>
+                </div>
+                <div class="input-container">
+                    <input type="password" id="password" name="cpassword" placeholder="Confirm Password" required>
+                </div>
+                <div style="margin-bottom: 13px;">
+                    <a href="SignInForm.html" >Already have an Account</a>
+                </div>
+                
+                <button type="submit">Register</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

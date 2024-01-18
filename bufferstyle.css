@@ -1,0 +1,35 @@
+@charset "ISO-8859-1";
+body {
+	font-family: 'Arial', sans-serif;
+    background-image: url(bgimg_login.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;   
+}
+
+.buffering-container {
+    text-align: center;
+}
+
+.buffering-animation {
+    width: 100px;
+    height: 100px;
+    background-color: #3498db;
+    border-radius: 50%;
+    animation: spin 2s linear infinite;
+    margin: 0 auto;
+}
+
+.buffering-text {
+    font-size: 24px;
+    margin-top: 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

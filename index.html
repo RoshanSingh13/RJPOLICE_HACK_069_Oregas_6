@@ -4,28 +4,91 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
+  
+
+<div id="map"></div>
+
+<script>
+    function updateMapAndShowCoordinates() {
+        var latitude = document.getElementById('latitude').value;
+        var longitude = document.getElementById('longitude').value;
+        var radius = document.getElementById('radius').value;
+
+        // Make an AJAX request to the server to get the updated map
+        fetch('/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `latitude=${latitude}&longitude=${longitude}&radius=${radius}`,
+        })
+        .then(response => response.text())
+        .then(data => {
+            // Update the content of the result div with the new result
+            document.getElementById('result').innerHTML = data;
+
+            // Show the map by updating the content of the map div
+            document.getElementById('map').innerHTML = '<iframe src="templates/output_map.html" width="100%" height="600px"></iframe>';
+        });
+    }
+</script>
+  <style>
+    .neon-input-container {
+      display: inline-flex;
+      align-items: center;
+    }
+  
+    .neon-input {
+      width: 100%;
+      padding: 8px;
+      margin-right: 5px;
+      background-color: #dacece;
+      border: 1px solid #3d2aeb;
+      border-radius: 5px;
+      color: #0c0c0c;
+      font-size: 12px; /* Adjust the font size as needed */
+      box-shadow: 0 0 10px #e3ccde, 0 0 20px #e3ccde, 0 0 30px #e3ccde; /* Neon glow effect */
+      transition: box-shadow 0.3s ease-in-out;
+    }
+  
+    .neon-input:focus {
+      outline: none;
+      box-shadow: 0 0 10px #eb24eb, 0 0 20px #eb24eb, 0 0 30px #eb24eb, 0 0 40px #eb24eb; /* Neon glow effect on focus */
+    }
+    .image-gallery {
+  display: flex;
+  overflow-x: auto; /* Enable horizontal scrolling */
+  scroll-snap-type: x mandatory; /* Snap to each image */
+}
+
+.image-gallery img {
+  flex: 0 0 auto; /* Prevent images from shrinking */
+  width: 100%; /* Ensure images take full width of the container */
+  scroll-snap-align: start; /* Align images at the start of the scroll container */
+  margin-right: 10px; /* Add some space between images */
+}
+
+  </style>
 </head>
 <body>
   <header class="text-gray-600 body-font">
     <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
       <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
-          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-        </svg>
+        <img src="https://fightexam.com/wp-content/uploads/2020/10/rajasthan-police-338871-vap-1024x576.jpg" class="w-10 h-10 p-2 bg-indigo-500 rounded-full" alt="Logo">
         <span class="ml-3 text-xl">GEO-TAGGING</span>
       </a>
       <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
         <a class="mr-5 hover:text-gray-900">Home</a>
-        <a class="mr-5 hover:text-gray-900">Services</a>
-        <a class="mr-5 hover:text-gray-900">Form</a>
+        <!-- <a class="mr-5 hover:text-gray-900">Services</a>
+        <a class="mr-5 hover:text-gray-900">Form</a> -->
         <a class="mr-5 hover:text-gray-900">Contact</a>
-        <a class="mr-5 hover:text-gray-900">About us</a>
+        <!-- <a class="mr-5 hover:text-gray-900">About us</a> -->
       </nav>
-      <button class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">Sign-up
+      <!-- <button class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">Sign-up
         <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
           <path d="M5 12h14M12 5l7 7-7 7"></path>
         </svg>
-      </button>
+      </button> -->
     </div>
   </header>
   <section class="text-gray-600 body-font">
@@ -34,18 +97,30 @@
         <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Geo-Tagging of privately owned cameras.</h1>
         <p class="mb-8 leading-relaxed">You can search for Private cameras in businesses, homes, and institutions that play a crucial role in enhancing public safety and crime detection. With their private clear locations, making it easy for the police to efficiently access relevant video footage during investigations in specific crime-prone areas.</p>
         <div class="flex w-full md:justify-start justify-center items-end">
-          <div class="relative mr-4 md:w-full lg:w-full xl:w-1/2 w-2/4">
-            <label for="hero-field" class="leading-7 text-sm text-gray-600">Enter Location</label>
-            <input type="text" id="hero-field" name="hero-field" class="w-full bg-gray-100 rounded border bg-opacity-50 border-gray-300 focus:ring-2 focus:ring-indigo-200 focus:bg-transparent focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+          <div class="relative mr-3 md:w-full lg:w-full xl:w-1/2 w-2/4">
+            <label for="hero-field" class="leading-7 text-2xl text-black-600"><b>Enter Location</b></label><br><br>
+            <div class="neon-input-container">
+              <input type="text" placeholder="Enter North Co-ordinate" id="hero-field" name="hero-field" class="neon-input">
+              <span style="color: #0b0c0b; font-size: 20px;">N</span>
+            </div>  <br>   
+            <br>            
+            <div class="neon-input-container">
+              <input type="text" placeholder = "Enter East Co-ordinate" id="hero-field" name="hero-field" class="neon-input">
+              <span style="color: #040504; font-size: 20px;">E</span>
+            </div>
+            <br> 
+            <br>            
+            <div class="neon-input-container">
+              <input type="text"  placeholder="Enter Radius" id="hero-field" name="hero-field" class="neon-input">
+              <span style="color: #040504; font-size: 20px;">KM</span>
+            </div>
+            <div style="margin-top: 10px;">
+              <button onclick="maap()" class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Search</button>
           </div>
-          <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Search</button>
-        </div>
         <p class="text-sm mt-2 text-gray-500 mb-8 w-full">Geo-tagging cameras with precise location information.</p>
         <div class="flex lg:flex-row md:flex-col">
           <button class="bg-gray-100 inline-flex py-3 px-5 rounded-lg items-center hover:bg-gray-200 focus:outline-none">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-6 h-6" viewBox="0 0 512 512">
-              <path d="M99.617 8.057a50.191 50.191 0 00-38.815-6.713l230.932 230.933 74.846-74.846L99.617 8.057zM32.139 20.116c-6.441 8.563-10.148 19.077-10.148 30.199v411.358c0 11.123 3.708 21.636 10.148 30.199l235.877-235.877L32.139 20.116zM464.261 212.087l-67.266-37.637-81.544 81.544 81.548 81.548 67.273-37.64c16.117-9.03 25.738-25.442 25.738-43.908s-9.621-34.877-25.749-43.907zM291.733 279.711L60.815 510.629c3.786.891 7.639 1.371 11.492 1.371a50.275 50.275 0 0027.31-8.07l266.965-149.372-74.849-74.847z"></path>
-            </svg>
+            
             <span class="ml-4 flex items-start flex-col leading-none">
               <span class="text-xs text-gray-600 mb-1">GET IT ON</span>
               <span class="title-font font-medium">Google Play</span>
@@ -63,9 +138,29 @@
           </button>
         </div>
       </div>
-      <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
-        <img class="object-cover object-center rounded" alt="hero" src="https://hawkenterprises.in/wp-content/uploads/2022/02/CCTV-Cameras-installation-in-mumbai-hawk-enterprises.jpg">
-      </div>
+      
+<div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
+  <div class="image-gallery" id="imageGallery">
+    <img class="object-cover object-center rounded" alt="hero" src="https://factly.in/wp-content/uploads//2020/02/Data-on-Police-Organisations_Featured-Image.jpg">
+    <img class="object-cover object-center rounded" alt="image2" src="https://static.toiimg.com/thumb/msid-85705250,width-400,resizemode-4/85705250.jpg">
+    <img class="object-cover object-center rounded" alt="image3" src="https://i0.wp.com/www.dfordelhi.in/wp-content/uploads/2019/02/cctv-road_1200x900.jpg?fit=1040%2C780&ssl=1">
+    <img class="object-cover object-center rounded" alt="image4" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSraynap8h0ukZuF5W-CnRnBgE142ntz5xIfMvpgvCoc1A-JKv919dbB_d7zlj3SSPlveY&usqp=CAU">
+  </div>
+  <script>
+    var currentImageIndex = 0;
+    var images = document.getElementById('imageGallery').getElementsByTagName('img');
+    
+    function showNextImage() {
+      images[currentImageIndex].style.display = 'none';
+      currentImageIndex = (currentImageIndex + 1) % images.length;
+      images[currentImageIndex].style.display = 'block';
+    }
+  
+    // Change image every 2 seconds
+    setInterval(showNextImage, 2000);
+  </script>
+</div>
+      
     </div>
   </section>
   <section class="text-gray-600 body-font relative">
@@ -93,9 +188,7 @@
     <div class="container px-5 py-24 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
       <div class="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left">
         <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-          </svg>
+          <img src="https://fightexam.com/wp-content/uploads/2020/10/rajasthan-police-338871-vap-1024x576.jpg" class="w-10 h-10 p-2 bg-indigo-500 rounded-full" alt="Logo">
           <span class="ml-3 text-xl">GEO-TAGGING</span>
         </a>
         <p class="mt-2 text-sm text-gray-500">Geo-Tagging of privately owned cameras.</p>
@@ -179,9 +272,7 @@
         </p>
         <span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
           <a class="text-gray-500">
-            <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-              <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
-            </svg>
+            <img src="https://fightexam.com/wp-content/uploads/2020/10/rajasthan-police-338871-vap-1024x576.jpg" class="w-10 h-10 p-2 bg-indigo-500 rounded-full" alt="Logo">
           </a>
           <a class="ml-3 text-gray-500">
             <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
@@ -204,6 +295,10 @@
       </div>
     </div>
   </footer>
-  
+  <script>
+  function maap(){
+  window.location = "output_map.html";
+  }
+    </script>
 </body>
 </html>

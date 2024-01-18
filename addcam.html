@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camera Registration Form</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #e6b2b2;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        form {
+            background-color: #c9bcbc;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px; /* Set a maximum width if needed */
+            box-sizing: border-box;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+            color:rgb(202, 100, 176);
+        }
+
+        button {
+            background-color: #1e1a96d3;
+            color: #fff;
+            margin-left:40%;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #ee5e1182;
+        }
+    </style>
+</head>
+<body>
+
+    <form action="#" method="post" id="registrationForm">
+        <!-- Personal Information -->
+        <label for="name">User Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="contact">Contact:</label>
+        <input placeholder="Enter 10 digits without spaces or dashes" type="tel" id="contact" name="contact" pattern="[0-9]{10}" required>
+       
+        <label for="aadhar">Aadhar:</label>
+        <input placeholder="Enter 12 digits" type="text" id="aadhar" name="aadhar" pattern="[0-9]{12}" required>
+        
+        <!-- Camera Information -->
+        <label for="latitude">Latitude:</label>
+        <input type="text" id="latitude" name="latitude" required>
+
+        <label for="longitude">Longitude:</label>
+        <input type="text" id="longitude" name="longitude" required>
+
+        <label for="model">Camera Model:</label>
+        <input type="text" id="model" name="model" required>
+
+        <label for="resolution">Resolution:</label>
+        <input type="text" id="resolution" name="resolution" required>
+
+        <label for="recordingCapabilities">Recording Capabilities:</label>
+        <input type="text" id="recordingCapabilities" name="recordingCapabilities" required>
+
+        <label for="visibilityRange">Visibility Range:</label>
+        <input type="text" id="visibilityRange" name="visibilityRange" required>
+
+        <!-- Owner Contact Details -->
+        <label for="ownerContactName">Owner's Name as per aadhar:</label>
+        <input type="text" id="ownerContactName" name="ownerContactName" required>
+
+        <label for="ownerContactEmail">Address</label>
+        <input type="email" id="ownerContactEmail" name="ownerContactEmail" required>
+
+         <br>
+        <br>
+
+        <button type="submit">Register</button>
+    </form>
+
+</body>
+</html>

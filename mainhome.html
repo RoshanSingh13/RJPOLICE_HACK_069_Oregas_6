@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        header {
+            background-color: #200864;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        section {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            color: #c21010;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        #head {
+            background-color: #f00e0e;
+            color: white;
+            text-align: center;
+            margin-top: 25px;
+            padding: 10px;
+        }
+        #eye {
+          margin-left: 19px;
+          margin-bottom: 50px;
+          font-size: x-large;
+
+        }
+
+        #top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #15087a;
+            padding: 10px;
+        }
+
+        .navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .navbar li {
+            margin-right: 20px;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        .right a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        .right a:hover {
+            text-decoration: underline;
+        }
+
+        .content-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .slideshow-container {
+            max-width: 600px;
+            margin-right: 20px;
+            position: relative;
+        }
+
+        .mySlides {
+            display: none;
+        }
+
+        .fade {
+            animation: fade 2s ease-in-out infinite;
+        }
+
+        @keyframes fade {
+            0%, 100% {
+                opacity: 0;
+            }
+            20%, 80% {
+                opacity: 1;
+            }
+        }
+
+        .dot {
+            height: 15px;
+            width: 15px;
+            margin: 0 5px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+
+        .active {
+            background-color: #717171;
+        }
+
+        #txt {
+            max-width: 600px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+    </style>
+    <title>ExtraEye</title>
+</head>
+<body>
+
+    <div id="head"><img src="logo.png" alt="LOGO" height="40vh" width="40vh" id="logo"><b id="eye">ExtraEye</b></div>
+    <div id="top">
+        <div class="navbar">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#info">Info</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+        <div class="right">
+            <a href="BufferPage.html">Login</a>
+            <a href="SignUpForm.html">Sign Up</a>
+        </div>
+    </div>
+
+    <div class="content-container">
+        <div class="slideshow-container">
+
+            <div class="mySlides fade">
+                <div class="numbertext">1 / 3</div>
+                <img src="img1.png" style="height: 330px; width:500px;">
+            </div>
+
+            <div class="mySlides fade">
+                <div class="numbertext">2 / 3</div>
+                <img src="img2.jpg" style="height: 330px; width:500px;">
+            </div>
+
+            <div class="mySlides fade">
+                <div class="numbertext">3 / 3</div>
+                <img src="img3.jpg" style="height: 330px; width:500px;">
+            </div>
+
+        </div>
+        <div id="txt">This project is an initiative towards easy accessing the private cameras' coordinates and gathering
+            necessary information required by nearby cameras. It involves: <br><br>
+            <ol>
+                <li>Adding private camera details</li>
+                <li>Retrieving info as required</li>
+                <li>maps API integration</li>
+                <li>reducing evidence gathering time</li>
+            </ol>
+            <br>All public are required to add their camera with outdoor view so that the technology becomes much stronger and efficient and powerful
+        </div>
+    </div>
+
+    <header id="about">
+        <h1>About Geo-Tagging System</h1>
+    </header>
+
+    <section>
+        <h2>Problem Identification</h2>
+        <p>
+            Private cameras in businesses, homes, and institutions play a crucial role in enhancing public safety and crime detection.
+            Many private cameras lack clear locations, making it difficult for the police to efficiently access relevant video footage during investigations in specific crime-prone areas.
+        </p>
+
+        <h2>Purpose of Geo-tagging</h2>
+        <ul>
+            <li>Geo-tagging involves tagging cameras with precise location information.</li>
+            <li>Geo-tagging aids police in crime investigations by providing a clear map-like location for private cameras, facilitating quick identification and access to crucial video footage.</li>
+            <li>Enhances law enforcement's ability to gather evidence, understand the context of a crime, and expedite case resolution for overall public safety.</li>
+        </ul>
+
+        <h2>Solution Needed</h2>
+        <p>
+            Develop a comprehensive system to mark the location of private cameras for improved public safety and faster police response.
+            Create a user-friendly system enabling law enforcement to easily identify the placement of each private camera, facilitating quick retrieval of specific video footage.
+            Establish a standardized metadata format for geo-tagged information, including camera specifications, owner contact details, and camera visibility range.
+        </p>
+
+        <!-- Add more sections as needed -->
+
+    </section>
+
+    <footer>
+        &copy; 2024 Geo-Tagging System
+    </footer>
+    <header id="info">
+        <h1>Rajasthan Police</h1>
+        <h2>Cybersecurity and Technology</h2>
+    </header>
+
+    <section>
+        <h2>About Rajasthan Police</h2>
+        <p>
+            Rajasthan Police is the law enforcement agency for the state of Rajasthan, India. Committed to ensuring the safety and security of the public, Rajasthan Police employs various technologies to enhance its capabilities.
+        </p>
+
+        <h2>Use of Technology in Cybersecurity</h2>
+        <p>
+            Rajasthan Police recognizes the growing importance of technology in addressing cybersecurity challenges. Here are some key initiatives:
+        </p>
+
+        <ul>
+            <li>Implementation of advanced cybersecurity measures to protect against cyber threats.</li>
+            <li>Regular training programs for personnel to stay updated on the latest cybersecurity trends and best practices.</li>
+            <li>Collaboration with technology experts and organizations to strengthen cybersecurity infrastructure.</li>
+            <li>Utilization of cutting-edge tools and software for threat detection and incident response.</li>
+        </ul>
+
+        <h2>Technology and Crime Prevention</h2>
+        <p>
+            Rajasthan Police leverages technology not only in cybersecurity but also in crime prevention and investigation. This includes the use of geo-tagging systems, surveillance technologies, and data analytics for efficient policing.
+        </p>
+
+        <!-- Add more sections as needed -->
+
+    </section>
+
+    <footer>
+        &copy; 2024 Rajasthan Police
+    </footer>
+    <header id="contact">
+        <h1>Contact Rajasthan Police</h1>
+    </header>
+
+    <section>
+        <h2>Connect with Us</h2>
+        <ul>
+            <li><strong>Email:</strong> <a href="mailto:rajasthanpolice@example.com">rajasthanpolice@example.com</a></li>
+            <li><strong>Instagram:</strong> <a href="https://www.instagram.com/rajasthanpolice/" target="_blank">@rajasthanpolice</a></li>
+            <li><strong>Mobile:</strong> <a href="tel:+91XXXXXXXXXX">+91 XXXXXXXXXX</a></li>
+            <li><strong>Twitter:</strong> <a href="https://twitter.com/rajasthanpolice" target="_blank">@rajasthanpolice</a></li>
+            <li><strong>Snapchat:</strong> <a href="https://www.snapchat.com/add/rajasthanpolice" target="_blank">rajasthanpolice</a></li>
+            <!-- Add more social media links as needed -->
+        </ul>
+    </section>
+
+    <footer>
+        &copy; 2024 Rajasthan Police
+    </footer>
+
+    <script>
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";
+            dots[slideIndex-1].className += " active";
+            setTimeout(showSlides, 8000); // Change image every 2 seconds
+        }
+    </script>
+</body>
+</html>
